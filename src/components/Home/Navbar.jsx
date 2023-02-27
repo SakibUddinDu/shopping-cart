@@ -1,27 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../../Assets/images/logo.png'
 import { useSelector } from 'react-redux';
+import Cart from '../Cart/Cart';
+import ProductContainer from './ProductContainer/ProductsContainer';
+
 
 const Navbar = () => {
-    const state =useSelector((state)=>state.userData.cart)
-    const totalQuantity =state.reduce((total, cart )=> total + cart.quantity, 0) 
+    const state = useSelector((state) => state.userData.cart)
+    const totalQuantity = state.reduce((total, cart) => total + cart.quantity, 0)
+
+    const [showCart, setShowCart] = useState(false);
+
+    const handleShowCart = () => {
+        setShowCart(!showCart);
+    }
+
     return (
+        <>
         <nav className="bg-[#171C2A] py-4">
             <div className="navBar">
-            <a href="index.html">
-                <img src={logo} alt="LWS" className="max-w-[140px]" />
-            </a>
-
-            <div className="flex gap-4">
-                <a href="#home" className="navHome" id="lws-home"> Home </a>
-                <a href="cart.html" className="navCart" id="lws-cart">
-                <i className="text-xl fa-sharp fa-solid fa-bag-shopping"></i>
-                <span id="lws-totalCart">{totalQuantity}</span>
+                <a href="index.html">
+                    <img src={logo} alt="LWS" className="max-w-[140px]" />
                 </a>
+
+                <div className="flex gap-4">
+                    <a href="#home" className="navHome" id="lws-home"> Home </a>
+                    <a className="navCart" id="lws-cart" onClick={handleShowCart}>
+                        <i className="text-xl fa-sharp fa-solid fa-bag-shopping"></i>
+                        <span id="lws-totalCart">{totalQuantity}</span>
+                    </a>
+                </div>
             </div>
-            </div>
-        </nav>
+            {/* {showCart ? <Cart></Cart> : null} */}
+        </nav>           
+         {showCart ? <Cart /> : <ProductContainer></ProductContainer>}
+         </>
+
+
     );
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+// import React from 'react';
+// import logo from '../../Assets/images/logo.png'
+// import { useSelector } from 'react-redux';
+
+// const Navbar = () => {
+//     const state =useSelector((state)=>state.userData.cart)
+//     const totalQuantity =state.reduce((total, cart )=> total + cart.quantity, 0) 
+
+//     const handleShowCart = () =>{
+    
+//     }
+//     return (
+//         <nav className="bg-[#171C2A] py-4">
+//             <div className="navBar">
+//             <a href="index.html">
+//                 <img src={logo} alt="LWS" className="max-w-[140px]" />
+//             </a>
+
+//             <div className="flex gap-4" >
+//                 <a href="#home" className="navHome" id="lws-home"> Home </a>
+//                 <a href="cart.html" className="navCart" id="lws-cart" onClick={handleShowCart}>
+//                 <i className="text-xl fa-sharp fa-solid fa-bag-shopping"></i>
+//                 <span id="lws-totalCart">{totalQuantity}</span>
+//                 </a>
+//             </div>
+//             </div>
+//         </nav>
+//     );
+// };
+
+// export default Navbar;

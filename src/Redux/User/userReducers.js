@@ -3,9 +3,7 @@ import { initialState } from './initialState';
 
 
 export const userReducers =(state = initialState, action)=>{
-    // const newCartProduct =state.cart.filter((cartItem)=>cartItem.id !== action.payload.id);
     const selectedCartProduct =state.cart.find((cartItem)=>cartItem.id === action.payload.id);
-    // console.log(selectedCartProduct);
     switch (action.type) {
         case ADD_TO_CART:
             if(selectedCartProduct){
@@ -16,14 +14,12 @@ export const userReducers =(state = initialState, action)=>{
                 return {
                     ...state, 
                     cart: [...newCart, selectedCartProduct]// quantity  ek barie state return
-                    // cart: [...newCart, selectedCartProduct, {...action.payload, totalPrice: state.cart.quantity * action.payload.price}]// quantity  ek barie state return
                 }
             }
           
             return {
                 ...state,
                 cart: [...state.cart, {...action.payload, quantity: 1} ]//// quantity  ek jog state return
-                // cart: [...state.cart, {...action.payload, quantity: 1, totalPrice: state.cart.quantity * action.payload.price} ]//// quantity  ek jog state return
               };
             
         
@@ -45,7 +41,10 @@ export const userReducers =(state = initialState, action)=>{
             
         case INCREMENT_QUANTITY:
             const incrementCartItem = state.cart.map((cart) => {
-                        if (cart.id === action.payload.id) {
+                console.log(action.payload.quantity);
+                console.log(cart.quantity)
+                console.log(cart.id === action.payload.id && cart.quantity <= action.payload.quantity )
+                        if (cart.id === action.payload.id && cart.quantity <= action.payload.quantity ) {
                             return {
                                 ...cart,
                                 quantity: cart.quantity + 1,

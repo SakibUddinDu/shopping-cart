@@ -12,6 +12,7 @@ const Product = ({product}) => {
         dispatch(addToCart(product))
         dispatch(cardQuantityDecreser(id, quantity))
     }
+    
     return (
         <div className="lws-productCard">
                 <img className="lws-productImage" src={imageUrl} alt="product" />
@@ -22,7 +23,7 @@ const Product = ({product}) => {
                     <p className="productPrice">BDT <span className="lws-price">{price}</span></p>
                     <p className="productQuantity">QTY <span className="lws-quantity">{quantity}</span></p>
                     </div>
-                    <button className="lws-btnAddToCart" onClick={handleAddToCart}>Add To Cart</button>
+                    <button disabled={quantity === 0} className="lws-btnAddToCart" onClick={handleAddToCart}>Add To Cart</button>
                 </div>
         </div>         
     );

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { cardQuantityDecreser } from '../../../Redux/Admin/actions';
 import { addToCart } from '../../../Redux/User/actions';
 
 const Product = ({product}) => {
@@ -9,6 +10,7 @@ const Product = ({product}) => {
 
     const handleAddToCart=()=>{
         dispatch(addToCart(product))
+        dispatch(cardQuantityDecreser(id, quantity))
     }
     return (
         <div className="lws-productCard">

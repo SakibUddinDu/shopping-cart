@@ -10,7 +10,7 @@ const AddProductForm = () => {
         category:"",
         imageUrl:"",
         price:0,
-        quantity:0
+        quantity: 0
     })
     console.log(formData);
     const handleChange =(e)=>{

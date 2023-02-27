@@ -8,6 +8,7 @@ const CartItem = ({cartItem}) => {
 
     const removeHandler = (id) =>{
       dispatch(removeFromCart(id))
+      
     }
 
     return (

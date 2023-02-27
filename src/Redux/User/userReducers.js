@@ -3,12 +3,11 @@ import { initialState } from './initialState';
 
 
 export const userReducers =(state = initialState, action)=>{
+    // const newCartProduct =state.cart.filter((cartItem)=>cartItem.id !== action.payload.id);
+    const selectedCartProduct =state.cart.find((cartItem)=>cartItem.id === action.payload.id);
+    console.log(selectedCartProduct);
     switch (action.type) {
         case ADD_TO_CART:
-            // const newCartProduct =state.cart.filter((cartItem)=>cartItem.id !== action.payload.id);
-            const selectedCartProduct =state.cart.find((cartItem)=>cartItem.id === action.payload.id);
-            console.log(selectedCartProduct);
-
             if(selectedCartProduct){
                 const newCart = state.cart.filter((product) => product.id !== selectedCartProduct.id)
                 selectedCartProduct.quantity = selectedCartProduct.quantity + 1;
@@ -26,6 +25,16 @@ export const userReducers =(state = initialState, action)=>{
               };
         
         case REMOVE_FROM_CART:
+            if(selectedCartProduct > 1){
+                const newCart = state.cart.filter((product) => product.id !== selectedCartProduct.id)
+                selectedCartProduct.quantity = selectedCartProduct.quantity - 1;//-
+                console.log(newCart)
+
+                return {
+                    ...state, 
+                    cart: [...newCart, selectedCartProduct]
+                }
+            }
             return {
                 ...state,
                 cart: state.cart.filter((cart) => cart.id !== action.payload)

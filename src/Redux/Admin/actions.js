@@ -1,7 +1,7 @@
 import { ADD_PRODUCTS, CARD_QUANTITY_DECREASER } from './actionTypes';
 
 export const addProduct = (formData)=>{
-    return{
+    return {
         type: ADD_PRODUCTS,
         payload: formData
     }

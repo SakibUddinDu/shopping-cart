@@ -12,7 +12,7 @@ const CartItems = () => {
         <div className="cartListContainer">
             <div className="space-y-6">
                 {
-                    carts.map((cartItem)=>  <CartItem key={cartItem.id} cartItem={cartItem}></CartItem>)
+                    carts.map((cartItem)=>  <CartItem key={cartItem.id} cartItemData={cartItem}></CartItem>)
                 }  
            </div> 
            <BillDetails></BillDetails>  

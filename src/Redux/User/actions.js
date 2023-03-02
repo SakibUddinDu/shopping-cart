@@ -9,10 +9,10 @@ export const addToCart =(productData)=>{
     }
 }
 export const removeFromCart =(id)=>{
-    // return {
-    //     type:REMOVE_FROM_CART,
-    //     payload: id
-    // }
+    return {
+        type:REMOVE_FROM_CART,
+        payload: id
+    }
 }
 export const incrementQuantity =(id, quantity)=>{
     return {

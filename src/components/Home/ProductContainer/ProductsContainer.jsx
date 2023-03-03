@@ -12,8 +12,6 @@ const ProductContainer = () => {
             <div className="productWrapper">
                 {
                     productData.length === 0 ?  "No product Exists, but you can add": <Products></Products>
-                   
-                    
                 }
                 <AddProductForm></AddProductForm>
             </div>

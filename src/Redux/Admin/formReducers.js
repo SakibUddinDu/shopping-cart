@@ -41,13 +41,6 @@ const formReducers =(state=initialState, action)=>{
                         quantity: action.payload.quantity - 1,
                     }
                 }
-                // if(product.id === action.payload.id){
-                    // return {
-                    //     ...product,
-                    //     quantity: action.payload.quantity - 1,
-                    // }
-
-                // }
             })
         
     

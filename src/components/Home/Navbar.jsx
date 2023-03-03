@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import logo from '../../Assets/images/logo.png'
 import { useSelector } from 'react-redux';
-import Cart from '../Cart/Cart';
-import ProductContainer from './ProductContainer/ProductsContainer';
 
-
-const Navbar = () => {
+const Navbar = ({handleShowCart}) => {
+    console.log(handleShowCart);
     const state = useSelector((state) => state.userData.cart)
     const totalQuantity = state.reduce((total, cart) => total + cart.quantity, 0)
-
-    const [showCart, setShowCart] = useState(false);
-
-    const handleShowCart = () => {
-        setShowCart(!showCart);
-    }
-
+    
     return (
         <>
         <nav className="bg-[#171C2A] py-4">
@@ -31,9 +23,7 @@ const Navbar = () => {
                     </a>
                 </div>
             </div>
-            {/* {showCart ? <Cart></Cart> : null} */}
         </nav>           
-         {showCart ? <Cart /> : <ProductContainer></ProductContainer>}
          </>
 
 
